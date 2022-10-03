@@ -4,6 +4,8 @@ const router = express.Router();
 //importing data model schemas
 let { eventdata } = require("../models/models"); 
 
+
+
 //GET all entries
 router.get("/", (req, res, next) => { 
     eventdata.find( 
@@ -19,13 +21,14 @@ router.get("/", (req, res, next) => {
 
 //GET single entry by ID
 router.get("/id/:id", (req, res, next) => { 
-    eventdata.find({ _id: req.params.id }, (error, data) => {
+    eventdata.find({ _id: req.params.id }, (error, data) => {   
         if (error) {
             return next(error)
-        } else {
-            res.json(data)
+        } 
+        else {
+            res.json(data)           
         }
-    })
+    });
 });
 
 //GET entries based on search query
@@ -44,8 +47,14 @@ router.get("/search/", (req, res, next) => {
         (error, data) => { 
             if (error) {
                 return next(error);
-            } else {
+            } 
+// Backend error log. If event is searched and not in DB error response is passed.
+            else if (data.length == 0){ 
+                res.status(404).send('Event does not exist!');
+            }
+            else {
                 res.json(data);
+                console.log(data.length);
             }
         }
     );
@@ -70,6 +79,7 @@ router.post("/", (req, res, next) => {
     eventdata.create( 
         req.body, 
         (error, data) => { 
+            console.log(data);
             if (error) {
                 return next(error);
             } else {
@@ -109,7 +119,7 @@ router.put("/addAttendee/:id", (req, res, next) => {
                         { $push: { attendees: req.body.attendee } },
                         (error, data) => {
                             if (error) {
-                                consol
+                                console.log(error)
                                 return next(error);
                             } else {
                                 res.json(data);
@@ -121,7 +131,49 @@ router.put("/addAttendee/:id", (req, res, next) => {
             }
         }
     );
-    
 });
+// Counts total number of event attendees for each event
+router.get("/eventAttendees", (req, res, next) => { 
+        eventdata.aggregate([{
+            $group: {_id: "$eventName", total: { $sum: { $size:"$attendees"}}}
+        }], 
+            (error, data) => {
+                if (error) {
+                    return next(error);
+                } else {
+                    res.json(data);
+                }
+            }
+        )
+});
+
+// This router expands DB to get documents based on a specific client/company - Jeremiah
+router.get("/companyevent/:company_ID", (req, res, next) => {
+    eventdata.find( 
+        { company_ID: req.params.company_ID }, 
+        (error, data) => {
+            if (error) {
+                return next(error);
+            } 
+            else {
+                res.json(data);
+            }
+        }
+    );
+});
+// This router expands DB to get documents based on a specific client/company - Jeremiah
+router.delete('/eventdelete/:id', (req, res, next) => {
+    //mongoose will use _id of document
+    eventdata.findOneAndRemove({ _id: req.params.id }, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            res.status(200).json({
+                msg: data
+            });
+        }
+    });
+});
+
 
 module.exports = router;

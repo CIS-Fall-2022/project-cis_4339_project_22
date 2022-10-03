@@ -25,7 +25,8 @@ router.get("/id/:id", (req, res, next) => {
         (error, data) => {
             if (error) {
                 return next(error);
-            } else {
+            } 
+            else {
                 res.json(data);
             }
         }
@@ -90,6 +91,36 @@ router.put("/:id", (req, res, next) => {
             }
         }
     );
+    
+});
+
+// This router expands DB to get documents based on a specific client/company - Jeremiah
+router.get("/companyevent/:company_ID", (req, res, next) => {
+    primarydata.find( 
+        { company_ID: req.params.company_ID }, 
+        (error, data) => {
+            if (error) {
+                return next(error);
+            } 
+            else {
+                res.json(data);
+            }
+        }
+    );
+});
+// This router expands DB to get documents based on a specific client/company - Jeremiah
+
+router.delete('/clientdelete/:id', (req, res, next) => {
+    //mongoose will use _id of document
+    primarydata.findOneAndRemove({ _id: req.params.id }, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            res.status(200).json({
+                msg: data
+            });
+        }
+    });
 });
 
 module.exports = router;
