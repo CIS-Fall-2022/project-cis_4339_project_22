@@ -10,7 +10,7 @@ let primaryDataSchema = new Schema({
         require: true
     },
 // Including companyid for unique company value - Jeremiah
-    company_ID:{
+    organization_ID:{
         type:String,
         require: true
 // Including companyid for unique company value - Jeremiah   
@@ -60,7 +60,7 @@ let eventDataSchema = new Schema({
         require: true
     },
 // Including companyid for unique company value - Jeremiah
-    company_ID:{
+    organization_ID:{
         type:String,
         require: true
 // Including companyid for unique company value - Jeremiah
