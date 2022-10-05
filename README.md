@@ -16,3 +16,6 @@ cd frontend
 ```
 Follow instructions in frontend README
 
+## API Documentation
+
+The API documentation can be found at https://documenter.getpostman.com/view/19675786/2s83tGoC3u
