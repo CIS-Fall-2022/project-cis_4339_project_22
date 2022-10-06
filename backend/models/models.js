@@ -9,11 +9,11 @@ let primaryDataSchema = new Schema({
         type: String,
         require: true
     },
-// Including companyid for unique company value - Jeremiah
+// Including organizationid for unique company value - Jeremiah
     organization_ID:{
         type:String,
         require: true
-// Including companyid for unique company value - Jeremiah   
+// Including organizationid for unique company value - Jeremiah   
     },
     middleName: {
         type: String,
@@ -59,11 +59,11 @@ let eventDataSchema = new Schema({
         type: String,
         require: true
     },
-// Including companyid for unique company value - Jeremiah
+// Including organizationid for unique company value - Jeremiah
     organization_ID:{
         type:String,
         require: true
-// Including companyid for unique company value - Jeremiah
+// Including organizationid for unique company value - Jeremiah
     
     },
     services: {
