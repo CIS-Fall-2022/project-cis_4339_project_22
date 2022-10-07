@@ -148,7 +148,7 @@ router.get("/eventAttendees", (req, res, next) => {
         )
 });
 
-// This router expands DB to get documents based on a specific client/company - Jeremiah
+// This router expands DB to get documents based on a specific client/organization - Jeremiah
 router.get("/organizationevent/:organization_ID", (req, res, next) => {
     eventdata.find( 
         { organization_ID: req.params.organization_ID }, 
@@ -162,7 +162,7 @@ router.get("/organizationevent/:organization_ID", (req, res, next) => {
         }
     );
 });
-// This router expands DB to get documents based on a specific client/company - Jeremiah
+// This router expands DB to get documents based on a specific client/organization - Jeremiah
 router.delete('/eventdelete/:id', (req, res, next) => {
     //mongoose will use _id of document
     eventdata.findOneAndRemove({ _id: req.params.id }, (error, data) => {
