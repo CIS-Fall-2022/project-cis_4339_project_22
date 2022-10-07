@@ -116,7 +116,8 @@ Post and Create command into primaryData collection.
 Input
 ```
 {
-    "_id": "17ac8560-3d25-11ed-b844-2b6f22703bF3",
+    "_id": "17ac8560-3d25-11ed-b844-2b6f22703bg7",
+    "organization_ID":"Org_2",
     "firstName": "Harry",
     "middleName": "Edward",
     "lastName": "Styles",
@@ -134,8 +135,9 @@ Input
 Output
 ```
 {
-    "_id": "17ac8560-3d25-11ed-b844-2b6f22703bF3",
+    "_id": "17ac8560-3d25-11ed-b844-2b6f22703bg7",
     "firstName": "Harry",
+    "organization_ID": "Org_2",
     "middleName": "Edward",
     "lastName": "Styles",
     "email": "hes@yahoo.com",
@@ -147,8 +149,8 @@ Output
         "county": "Harris",
         "zip": "77005"
     },
-    "createdAt": "2022-10-06T18:10:03.082Z",
-    "updatedAt": "2022-10-06T18:10:03.082Z",
+    "createdAt": "2022-10-07T02:56:35.463Z",
+    "updatedAt": "2022-10-07T02:56:35.463Z",
     "__v": 0
 }
 ```
@@ -178,14 +180,15 @@ Output
             "county": "Harris",
             "zip": "77005"
         },
-        "_id": "17ac8560-3d25-11ed-b844-2b6f22703bF3",
+        "_id": "17ac8560-3d25-11ed-b844-2b6f22703bu7",
         "firstName": "Harry",
+        "organization_ID": "Org_2",
         "middleName": "Edward",
         "lastName": "Styles",
         "email": "hes@yahoo.com",
         "phoneNumbers": [],
-        "createdAt": "2022-10-06T18:10:03.082Z",
-        "updatedAt": "2022-10-06T18:10:03.082Z",
+        "createdAt": "2022-10-07T02:59:44.199Z",
+        "updatedAt": "2022-10-07T02:59:44.199Z",
         "__v": 0
     }
 ]
@@ -193,10 +196,51 @@ Output
 
 ### PUT
 ```
-Update and Add Attendee
-http://localhost:3000/eventdata/addAttendee/
-Adds an attendee to an already created event.
+Update Client by ID
+http://localhost:3000/primarydata/17ac8560-3d25-11ed-b844-2b6f22703bg7
+PUT and Update command to update based on _ID
 ```
+Input
+```
+{
+    "organization_ID":"Org_2",
+    "firstName": "Sebastian",
+    "middleName": "Edward",
+    "lastName": "Reyes",
+    "email": "hes@yahoo.com",
+    "phoneNumber": "7438467899",
+    "address": {
+        "line1": "1111",
+        "line2": "OuterSpace",
+        "city": "Houston",
+        "county": "Harris",
+        "zip": "77005"
+    }
+}
+```
+Output
+```
+{
+    "address": {
+        "line1": "1111",
+        "line2": "OuterSpace",
+        "city": "Houston",
+        "county": "Harris",
+        "zip": "77005"
+    },
+    "_id": "17ac8560-3d25-11ed-b844-2b6f22703bg7",
+    "firstName": "Sebastian",
+    "organization_ID": "Org_2",
+    "middleName": "Edward",
+    "lastName": "Reyes",
+    "email": "hes@yahoo.com",
+    "phoneNumbers": [],
+    "createdAt": "2022-10-07T02:56:35.463Z",
+    "updatedAt": "2022-10-07T03:25:57.630Z",
+    "__v": 0
+}
+```
+
 ### DEL
 ```
 Delete Client
@@ -205,26 +249,6 @@ Delete client with the use of _ID
 ```
 Outout
 ```
-{
-    "msg": {
-        "address": {
-            "line1": "1111",
-            "line2": "OuterSpace",
-            "city": "Houston",
-            "county": "Harris",
-            "zip": "77005"
-        },
-        "_id": "17ac8560-3d25-11ed-b844-2b6f22703bF3",
-        "firstName": "Harry",
-        "middleName": "Edward",
-        "lastName": "Styles",
-        "email": "hes@yahoo.com",
-        "phoneNumbers": [],
-        "createdAt": "2022-10-06T18:10:03.082Z",
-        "updatedAt": "2022-10-06T18:10:03.082Z",
-        "__v": 0
-    }
-}
 ```
 ## Resources
 ```
