@@ -117,6 +117,7 @@ router.delete('/clientdelete/:id', (req, res, next) => {
         if (error) {
             return next(error);
         } else {
+            console.log('Delete successful')
             res.status(200).json({
                 msg: data
             });
