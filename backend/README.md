@@ -39,6 +39,7 @@ It contains the requests from the two collections named EventData and PrimaryDat
 ### EventData
 ```
 db.eventData.insertOne({
+  "_id": "b426b30-4596-11ed-9bf2-df0996384a8f",
   "organization_ID": "Org_1",
   "eventName": "",
   "services": [],
@@ -56,7 +57,6 @@ db.eventData.insertOne({
   },
   "description": "",
   "attendees": [],
-  "__v": 0
 })
 ```
 
