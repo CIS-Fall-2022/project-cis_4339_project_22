@@ -134,11 +134,17 @@ router.put("/addAttendee/:id", (req, res, next) => {
         }
     );
 });
+
 // Counts total number of event attendees for each event
-router.get("/eventAttendees", (req, res, next) => { 
-        eventdata.aggregate([{
-            $group: {_id: "$eventName", total: { $sum: { $size:"$attendees"}}}
-        }], 
+router.get("/eventAttendees", (req, res, next) => {
+    var checkDate = new Date()
+    eventdata.aggregate([
+            {$match: {date: {
+                $gt : new Date(checkDate.setMonth(checkDate.getMonth() - 2)),
+                $lt : new Date()
+            }} },
+            {$group: {_id: "$eventName", total: { $sum: { $size:"$attendees"}}}}
+        ],
             (error, data) => {
                 if (error) {
                     return next(error);
