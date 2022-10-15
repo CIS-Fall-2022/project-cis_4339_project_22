@@ -12,6 +12,7 @@ export default {
   data() {
     return {
       client: {
+        organization_ID:"",
         firstName: "",
         middleName: "",
         lastName: "",
@@ -74,6 +75,7 @@ export default {
   validations() {
     return {
       client: {
+        organization_ID: {required},
         firstName: { required, alpha },
         lastName: { required, alpha },
         email: { email },
@@ -100,6 +102,7 @@ export default {
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
           <h2 class="text-2xl font-bold">Personal Details</h2>
           <!-- form field -->
+          
           <div class="flex flex-col">
             <label class="block">
               <span class="text-gray-700">First Name</span>
@@ -272,6 +275,24 @@ export default {
                 class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 v-model="client.address.zip"
               />
+            </label>
+          </div>
+          <div class="flex flex-col">
+            <label class="block">
+              <span class="text-gray-700">Organization ID</span>
+              <span style="color:#ff0000">*</span>
+              <input
+                type="text"
+                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                v-model="client.organization_ID"
+              />
+              <span class="text-black" v-if="v$.client.organization_ID.$error">
+                <p
+                  class="text-red-700"
+                  v-for="error of v$.client.organization_ID.$errors"
+                  :key="error.$uid"
+                >{{ error.$message }}!</p>
+              </span>
             </label>
           </div>
           <div></div>

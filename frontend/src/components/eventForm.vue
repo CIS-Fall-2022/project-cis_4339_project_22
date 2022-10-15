@@ -189,6 +189,24 @@
             </label>
           </div>
         </div>
+        <div class="flex flex-col">
+            <label class="block">
+              <span class="text-gray-700">Organization</span>
+              <span style="color:#ff0000">*</span>
+              <input
+                type="text"
+                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                v-model="event.organization_ID"
+              />
+              <span class="text-black" v-if="v$.event.organization_ID.$error">
+                <p
+                  class="text-red-700"
+                  v-for="error of v$.event.organization_ID.$errors"
+                  :key="error.$uid"
+                >{{ error.$message }}!</p>
+              </span>
+            </label>
+          </div>
 
         <div class="flex justify-between mt-10 mr-20">
           <button class="bg-red-700 text-white rounded" type="submit">Add New Event</button>
@@ -209,6 +227,7 @@ export default {
     return {
       checkedServices: [],
       event: {
+        organization_ID: "",
         eventName: "",
         services: [],
         date: "",
@@ -237,6 +256,7 @@ export default {
             alert("Event has been added.");
             this.$router.push("/findEvents");
             this.client = {
+              organization_ID: "",
               eventName: "",
               services: [],
               date: "",
@@ -261,6 +281,7 @@ export default {
   validations() {
     return {
       event: {
+        organization_ID: {required},
         eventName: { required },
         date: { required },
       },
