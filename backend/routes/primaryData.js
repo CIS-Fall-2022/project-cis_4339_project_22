@@ -6,7 +6,7 @@ let { primarydata } = require("../models/models");
 let { eventdata } = require("../models/models"); 
 
 //GET all entries
-router.get("/:organization_ID", (req, res, next) => { 
+router.get("/", (req, res, next) => { 
     primarydata.find( 
         { organization_ID: req.params.organization_ID },  
         (error, data) => {
