@@ -7,8 +7,7 @@ let { eventdata } = require("../models/models");
 
 //GET all entries
 router.get("/", (req, res, next) => { 
-    primarydata.find( 
-        { organization_ID: req.params.organization_ID },  
+    primarydata.find(   
         (error, data) => {
             if (error) {
                 console.log(error);
