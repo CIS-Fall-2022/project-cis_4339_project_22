@@ -1,5 +1,6 @@
 const express = require("express"); 
 const router = express.Router(); 
+const org_id = process.env.ORG_ID
 
 //importing data model schemas
 let { primarydata } = require("../models/models"); 
@@ -7,7 +8,7 @@ let { eventdata } = require("../models/models");
 
 //GET all entries
 router.get("/", (req, res, next) => { 
-    primarydata.find(   
+    primarydata.find({organization_ID : org_id}, 
         (error, data) => {
             if (error) {
                 console.log(error);
