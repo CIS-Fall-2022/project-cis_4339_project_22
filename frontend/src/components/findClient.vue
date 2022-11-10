@@ -148,6 +148,7 @@ export default {
     editClient(clientID) {
       this.$router.push({ name: "updateclient", params: { id: clientID } });
     },
+   
   },
 };
 </script>
