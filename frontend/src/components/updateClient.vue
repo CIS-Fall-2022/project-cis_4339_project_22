@@ -391,6 +391,7 @@ export default {
               :multiple="true"
               label="eventName"
             ></VueMultiselect>
+            <!-- <h1 v-for="event in eventData" :key="event._id" v-if="event.eventName in eventsChosen">Already exists</h1> #Attempt at added error message, doesnt work yet--> 
             <div class="flex justify-between">
               <button
                 @click="addToEvent"
