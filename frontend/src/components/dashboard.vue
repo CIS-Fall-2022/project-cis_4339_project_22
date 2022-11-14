@@ -3,40 +3,45 @@
     <div>
       <h1 class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10">Welcome</h1>
     </div>
-    <div>
-      <p v-for="query in queryData" :key = "query._id"> {{"Number of Attendees: " + query.total + " Event Name: " + query._id}}</p>
-    </div>
-  </main>
+  <canvas ref="myChart"></canvas>
+</main>
 </template>
+
 <script>
-import axios from "axios";
+import { Chart, registerables } from 'chart.js'
 
-
-// export default {
-//   methods: {
-//     routePush(routeName) {
-//       this.$router.push({ name: routeName });
-//     },
-//   },
-// };
-
+Chart.register(...registerables);
 export default {
-  data() {
-    return {
-      queryData: [],
-      //Parameter for search to occur
-      _id: "",
-      total: "",
-    };
+  props: {
+    label: {
+      type: Array,
+    },
+    chartData: {
+      type: Array,
+    },
   },
-
-mounted() {
-    let apiURL = 'http://localhost:3000/eventdata/eventAttendees';
-    axios.get(apiURL).then((resp) => {
-      this.queryData = resp.data;
+  async mounted() {
+    console.log(this.chartData);
+    await new Chart(this.$refs.myChart, {
+      type: "bar",
+      data: {
+        labels: this.label,
+        datasets: [
+          {
+            label: "Attendees",
+            backgroundColor: "rgba(144,238,144 , 0.9 )",
+            data: this.chartData,
+          },
+        ],
+      },
+      options: {
+        scales: {
+            y: {
+                min: 0
+            }
+        }
+      }
     });
-    window.scrollTo(0, 0);
-  }}
-
-
+  },
+};
 </script>
