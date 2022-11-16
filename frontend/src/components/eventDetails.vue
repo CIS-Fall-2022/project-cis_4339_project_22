@@ -197,6 +197,12 @@
             >Update Event</button>
           </div>
           <div class="flex justify-between mt-10 mr-20">
+            <button @click="DeleteEvent()"
+            type="submit"
+            class="bg-red-700 text-white rounded"
+            >Delete Event</button>
+          </div>
+          <div class="flex justify-between mt-10 mr-20">
             <button
               type="reset"
               class="border border-red-700 bg-white text-red-700 rounded"
@@ -276,7 +282,8 @@ export default {
   beforeMount() {
     axios
       .get(
-        import.meta.env.VITE_ROOT_API + `/eventdata/id/${this.$route.params.id}`
+        import.meta.env.VITE_ROOT_API + 
+          `/eventdata/id/${this.$route.params.id}`
       )
       .then((resp) => {
         let data = resp.data[0];
@@ -323,8 +330,19 @@ export default {
     editClient(clientID) {
       this.$router.push({ name: "updateclient", params: { id: clientID } });
     },
+
+  DeleteEvent(){
+    console.log(this.id)
+      let apiURL =  import.meta.env.VITE_ROOT_API + `/eventData/eventdelete/${this.id}`;
+      axios.delete(apiURL).then(() => {
+        alert("Event has been deleted.");
+        this.$router.back().catch((error) => {
+          console.log(error);
+        });
+      });
+    },
   },
-  // sets validations for the various data properties
+ // sets validations for the various data properties
   validations() {
     return {
       event: {
