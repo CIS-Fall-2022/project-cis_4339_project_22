@@ -3,7 +3,7 @@
     <div>
       <h1 class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10">Welcome</h1>
     </div>
-  <canvas ref="myChart"></canvas>
+    <canvas ref="myChart"></canvas>
 </main>
 </template>
 
@@ -30,11 +30,20 @@ export default {
           {
             label: "Attendees",
             backgroundColor: "rgba(144,238,144 , 0.9 )",
-            data: this.chartData,
+            data: this.chartData
           },
         ],
       },
       options: {
+        layout: {
+            padding: {
+                left: 55,
+                top: 20,
+                right: 55,
+                bottom: 100
+            }
+        },
+        responsive: true,
         scales: {
             y: {
                 min: 0
