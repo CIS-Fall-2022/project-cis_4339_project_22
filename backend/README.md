@@ -262,3 +262,11 @@ Outout
 
 ## POSTMAN API URL
 https://documenter.getpostman.com/view/19675786/2s83tGoC3u
+
+### *****Backend .env file needs to be set up as follows*****
+MONGO_URL = mongodb+srv://admin:N462nw7FBeDBIgGZ@group22.tta06lk.mongodb.net/test
+
+PORT = 3000
+
+### Org_1, Org_2, or Org_3
+ORG_ID = Org_2
