@@ -48,7 +48,7 @@ cd <template>
           background: linear-gradient(250deg, #C8102E 70%, #efecec 50.6%);
         "
       >
-        <h1 class="mr-20 text-3xl text-white">Dataplatform</h1>
+      <u><b><h1 class="mr-20 text-3xl text-white">{{organization}}</h1></b></u>  
       </section>
       <div>
         <router-view></router-view>
@@ -58,9 +58,35 @@ cd <template>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "App",
-};
+  data() {
+    return {
+      organization: "",
+    }
+  },
+  //THIS should change the header of the webpage to the Organization ID but still being worked on
+  created() {
+      let apiURL = `http://localhost:3000/eventdata/`;
+      axios.get(apiURL)
+      .then((resp) => {
+        this.organization = resp.data.organization_ID;
+        console.log(organization);
+      }).catch(error => {
+        console.log(error),
+        this.organization = error
+      })  
+      }
+    };
+
+
+
+
+
+// const env = require('../../backend/env')
+
 </script>
 
 <style>
