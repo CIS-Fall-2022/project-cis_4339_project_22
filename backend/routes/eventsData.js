@@ -139,10 +139,11 @@ router.put("/addAttendee/:id", (req, res, next) => {
 router.get("/eventAttendees", (req, res, next) => {
     var checkDate = new Date()
     eventdata.aggregate([
-            {$match: {date: {
+            {$match:       
+                {date: {
                 $gt : new Date(checkDate.setMonth(checkDate.getMonth() - 2)),
-                $lt : new Date()
-            }} },
+                $lt : new Date()}},
+            },
             {$group: {_id: "$eventName", total: { $sum: { $size:"$attendees"}}}}
         ],
             (error, data) => {

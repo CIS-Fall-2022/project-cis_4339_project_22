@@ -2,7 +2,8 @@
   <main>
     <!--Welcome Title-->
     <div>
-      <h1 class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10">Welcome</h1>
+      <h3 class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10">Welcome</h3>
+      <h1 class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10">Attendees From Last Two Months</h1>
     </div>
     <!--Bar chart that shows events from the last two months from today's date-->
     <canvas ref="myChart"></canvas>
