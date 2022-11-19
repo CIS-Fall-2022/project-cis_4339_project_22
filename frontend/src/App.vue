@@ -48,7 +48,7 @@ cd <template>
           background: linear-gradient(250deg, #C8102E 70%, #efecec 50.6%);
         "
       >
-      <u><b><h1 class="mr-20 text-3xl text-white">{{organization[0].organization_ID}}</h1></b></u>
+      <h1 class="mr-20 text-3xl text-white">{{organization[0].organization_ID}}</h1>
 
       </section>
       <div>
