@@ -64,6 +64,7 @@
         error: null,
       };
     },
+    // Fetching the data for bar chart
     methods: {
       async fetchData() {
         try {
@@ -71,7 +72,7 @@
           this.loading = true;
           const url = `http://localhost:3000/eventdata/eventAttendees`;
           const response = await axios.get(url);
-          //"re-organizing" - mapping json from the response
+          // "re-organizing" - mapping json from the response
           this.labels = response.data.map((item) => item._id);
           this.attendees = response.data.map((item) => item.total);
         } catch (err) {
