@@ -48,7 +48,8 @@ cd <template>
           background: linear-gradient(250deg, #C8102E 70%, #efecec 50.6%);
         "
       >
-      <u><b><h1 class="mr-20 text-3xl text-white">{{organization}}</h1></b></u>  
+      <u><b><h1 class="mr-20 text-3xl text-white">{{organization[0].organization_ID}}</h1></b></u>
+
       </section>
       <div>
         <router-view></router-view>
@@ -65,15 +66,16 @@ export default {
   data() {
     return {
       organization: "",
+      
     }
   },
   //THIS should change the header of the webpage to the Organization ID but still being worked on
   created() {
-      let apiURL = `http://localhost:3000/eventdata/`;
+      let apiURL = `http://localhost:3000/eventdata/organizationevent/`;
       axios.get(apiURL)
-      .then((resp) => {
-        this.organization = resp.data.organization_ID;
-        console.log(organization);
+      .then((res) => {
+        this.organization = res.data;
+        console.log(res);
       }).catch(error => {
         console.log(error),
         this.organization = error

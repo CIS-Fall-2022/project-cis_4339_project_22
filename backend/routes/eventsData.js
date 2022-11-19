@@ -156,9 +156,9 @@ router.get("/eventAttendees", (req, res, next) => {
 });
 
 // This router expands DB to get documents based on a specific client/organization - Jeremiah
-router.get("/organizationevent/:organization_ID", (req, res, next) => {
+router.get("/organizationevent/", (req, res, next) => {
     eventdata.find( 
-        { organization_ID: req.params.organization_ID }, 
+        { organization_ID: org_id }, 
         (error, data) => {
             if (error) {
                 return next(error);
