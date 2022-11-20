@@ -1,10 +1,13 @@
 <template>
   <main>
+    <!--Welcome Title-->
     <div>
       <h3 class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10">Welcome</h3>
       <h1 class="font-bold text-4xl text-red-700 tracking-widest text-center mt-10">Attendees From Last Two Months</h1>
     </div>
+    <!--Bar chart that shows events from the last two months from today's date-->
     <canvas ref="myChart"></canvas>
+    <!--Table that shows events from the last two months from today's dat-->
     <v-data-table>
     <table style="border: solid black 2px; margin-left: auto; margin-right: auto;">
       <thead>
@@ -35,6 +38,7 @@ export default {
       type: Array,
     },
   },
+  //Calling chart data from chartView from view folder and putting it in bar chart
   async mounted() {
     console.log(this.chartData);
     await new Chart(this.$refs.myChart, {
@@ -49,6 +53,7 @@ export default {
           },
         ],
       },
+      //Styling the bar chart
       options: {
         layout: {
             padding: {
@@ -67,7 +72,6 @@ export default {
       }
       
     });
-
 
   },
 };
