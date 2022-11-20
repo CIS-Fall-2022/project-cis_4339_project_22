@@ -9,11 +9,11 @@
     <canvas ref="myChart"></canvas>
     <!--Table that shows events from the last two months from today's dat-->
     <v-data-table>
-    <table style="border: solid black 2px; margin-left: auto; margin-right: auto;">
+    <table class="table table-dark" style="border: solid black 2px; margin-left: auto; margin-right: auto; box-shadow: 6px 6px 3px #999;">
       <thead>
         <tr>
-          <th style="border: solid black 2px; margin-left: auto; margin-right: auto;">Event:</th>
-          <td v-for="i in label" style="border: solid black 2px; margin-left: auto; margin-right: auto; text-align: center; width: 17%;">{{i}} </td>
+          <th style="border: solid black 2px; margin-left: auto; margin-right: auto; width:15%;">Event:</th>
+          <td v-for="i in label" style="border: solid black 2px; margin-left: auto; margin-right: auto; text-align: center;">{{i}} </td>
         </tr>
         <tr>
           <th style="border: solid black 2px; margin-left: auto; margin-right: auto;"># of Attendes:</th>

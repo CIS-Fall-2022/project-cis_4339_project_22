@@ -9,31 +9,31 @@ cd <template>
           <ul class="flex flex-col gap-4">
             <li>
               <router-link to="/">
-                <span style="position: relative; top: 6px" class="material-icons">dashboard</span>
+                <span style="position: relative; top: 6px; color:white;" class="material-icons">dashboard</span>
                 Dashboard
               </router-link>
             </li>
             <li>
               <router-link to="/intakeform">
-                <span style="position: relative; top: 6px" class="material-icons">people</span>
+                <span style="position: relative; top: 6px; color:white;" class="material-icons">people</span>
                 Client Intake Form
               </router-link>
             </li>
             <li>
               <router-link to="/eventform">
-                <span style="position: relative; top: 6px" class="material-icons">event</span>
+                <span style="position: relative; top: 6px; color:white;" class="material-icons">event</span>
                 Create Event
               </router-link>
             </li>
             <li>
               <router-link to="/findclient">
-                <span style="position: relative; top: 6px" class="material-icons">search</span>
+                <span style="position: relative; top: 6px; color:white;" class="material-icons">search</span>
                 Find Client
               </router-link>
             </li>
             <li>
               <router-link to="/findEvents">
-                <span style="position: relative; top: 6px" class="material-icons">search</span>
+                <span style="position: relative; top: 6px; color:white;" class="material-icons">search</span>
                 Find Event
               </router-link>
             </li>
