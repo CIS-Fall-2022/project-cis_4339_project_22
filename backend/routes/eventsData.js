@@ -140,10 +140,11 @@ router.get("/eventAttendees", (req, res, next) => {
     var checkDate = new Date()
     eventdata.aggregate([
             {$match:       
-                {date: {
+                {organization_ID: org_id, date: {
                 $gt : new Date(checkDate.setMonth(checkDate.getMonth() - 2)),
-                $lt : new Date()}},
-            },
+                $lt : new Date()
+            }},
+                },
             {$group: {_id: "$eventName", total: { $sum: { $size:"$attendees"}}}}
         ],
             (error, data) => {
